@@ -52,7 +52,7 @@
     };
 
     // code adapted from https://stackoverflow.com/a/6637396/3866300
-    query.addEventListener("keydown", (e) => {
+    query.addEventListener("keydown", function (e) {
         if (e.key === "Tab") {
             e.preventDefault();
             const start = this.selectionStart;
