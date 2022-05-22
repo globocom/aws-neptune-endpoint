@@ -27,13 +27,17 @@ setup:
 
 ## builds Docker image for local environment
 build-local:
-	docker build --target local -t neptune-endpoint .
+	docker build --target local -t globocom/aws-neptune-endpoint .
 
 ## builds Docker image for production environment
 build-prod:
-	docker build -t neptune-endpoint .
+	docker build -t globocom/aws-neptune-endpoint .
+
+## pushes the PROD image to Docker Hub
+push: build-prod
+	docker push globocom/aws-neptune-endpoint
 
 ## runs project locally
 run:
-	docker run --rm -it -p 5000:5000 --env-file configs/.env.local -v `pwd`:/app neptune-endpoint
+	docker run --rm -it -p 5000:5000 --env-file configs/.env.local -v `pwd`:/app globocom/aws-neptune-endpoint
 
